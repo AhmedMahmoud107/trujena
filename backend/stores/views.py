@@ -23,7 +23,7 @@ class SectionList(viewsets.ReadOnlyModelViewSet, AuthantecatiedStoreOwner):
     serializer_class = SectionSerializer
 
     def get_queryset(self):
-        store_pk = self.kwargs.get('store_pk')
+        store_pk = self.kwargs['store_pk']
         queryset = Section.objects.filter(store_id=store_pk)
         return self.filter_queryset_by_user(queryset, user='store_id__user')
 
@@ -38,6 +38,6 @@ class SectionTemplates(
     serializer_class = SectionTemplatesSerializer
 
     def get_queryset(self):
-        section_pk = self.kwargs.get('section_pk')
+        section_pk = self.kwargs['section_pk']
         queryset =Template.objects.filter(section_id=section_pk)
         return self.filter_queryset_by_user(queryset, user='section_id__store_id__user')
