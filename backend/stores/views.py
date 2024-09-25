@@ -40,5 +40,4 @@ class SectionTemplates(
     def get_queryset(self):
         section_pk = self.kwargs.get('section_pk')
         queryset =Template.objects.filter(section_id=section_pk)
-        return self.filter_queryset_by_user(queryset, field_name='section_id__store_id__user')
-
+        return self.filter_queryset_by_user(queryset, user='section_id__store_id__user')
