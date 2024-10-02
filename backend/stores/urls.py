@@ -1,9 +1,7 @@
-from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from rest_framework.routers import DefaultRouter , SimpleRouter
-from rest_framework_nested.routers import NestedDefaultRouter
+from rest_framework.routers import SimpleRouter
 
 
 router = SimpleRouter()

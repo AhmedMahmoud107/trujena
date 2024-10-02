@@ -1,5 +1,4 @@
 django
 djangorestframework
 djangorestframework-simplejwt
-drf-nested-routers
 drf-yasg
