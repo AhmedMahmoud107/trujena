@@ -2,18 +2,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter , SimpleRouter
 from rest_framework_nested.routers import NestedDefaultRouter
 
 
-router = DefaultRouter()
+router = SimpleRouter()
+
+router = SimpleRouter()
 router.register(r'stores', views.StoreList, basename='store')
+router.register(r'sections', views.SectionList, basename='section')
+router.register(r'templates', views.SectionTemplates, basename='template')
 
-stores_router = NestedDefaultRouter(router, r'stores', lookup='store')
-stores_router.register(r'sections', views.SectionList, basename='store-sections')
-
-sections_router = NestedDefaultRouter(stores_router, r'sections', lookup='section')
-sections_router.register(r'templates', views.SectionTemplates, basename='section-templates')
-
-
-urlpatterns = router.urls + stores_router.urls + sections_router.urls + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = router.urls + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
